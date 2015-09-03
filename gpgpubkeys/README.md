@@ -29,3 +29,8 @@ Döp filen till exempelvis **<förnamn>.asc**
 ##### Dekryptera en fil
 
     gpg -d filnamn.txt.gpg
+
+
+## pygpg
+
+Ett ytterligare alternativ för att kryptera och dekryptera är att använda det lilla program jag gjorde första veckan som Omegapointare då jag satt på bänken, nämligen [pygpg!](https://github.com/maxhope/pygpg). 
