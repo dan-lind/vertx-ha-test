@@ -7,7 +7,7 @@
 | Fixa lagringsarea |  Daniel       |  Done        |           |
 | Red ut vilken IDE |  Alla         |  In progess  |           |
 | Fixa VPN till kund|  Alla         |  In progess  |           |
-| Läs på om Scala   |  Daniel       |  In progess  |           |
+| Läs på om Acca    |  Daniel       |  In progess  |           |
 | Läs på om GCM     |  Hannes       |  In progess  |           |
 | Läs på om APN     |  Marc         |  In progess  |           |
 |                   |               |              |           |
