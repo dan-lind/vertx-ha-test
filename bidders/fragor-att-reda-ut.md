@@ -8,3 +8,4 @@
 * Hur får vi tillgång till protofuf-specarna?
 * Är vi bundna att köra någon särskilt utvecklingsmiljö eller är vi fria att välja själva?
 * Gällande uppdateringar om omstarter, hur definieras "nämnvärt" i frågan om hur det kommer påverka leveransen av meddelanden?
+* Vilken paketstruktur i Java ska vi använda? (T.ex. com.omegapoint.bid?)
