@@ -1,14 +1,8 @@
 package com.omegapoint.bid;
 
-import com.omegapoint.ws.RestService;
 import com.omegapoint.ws.RestServiceImpl;
-import io.vertx.core.DeploymentOptions;
-import io.vertx.core.Handler;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
-import io.vertx.core.http.HttpServerRequest;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 import java.util.function.Consumer;
 
@@ -25,8 +19,6 @@ public class Main {
                 } catch (Throwable t) {
                     t.printStackTrace();
                 }
-
-
             }
         };
 
