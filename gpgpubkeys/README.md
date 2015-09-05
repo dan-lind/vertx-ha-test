@@ -10,7 +10,7 @@ Har man homebrew installerat kan man istället köra:
 Sedan skapar man ett nyckelpar. Enklast är med prorgrammet GPG Keychain som följer med i programsviten ovan. 
 
 När det är gjort, exportera er publika nyckel (slutar på .asc) och pusha in den här under denna katalog. 
-Döp filen till exempelvis **<förnamn>.asc**
+Döp filen till exempelvis **\<förnamn\>.asc**
 
 ## Använda GPG Tools från terminalen
 
