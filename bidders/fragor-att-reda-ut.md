@@ -10,7 +10,7 @@
   DL - MongoDB för PoC. Det finns också en JDBC-klient som är asynkron, 
        http://vertx.io/docs/vertx-jdbc-client/java/ (antagligen någon "magi" eftersom JDBC är blockerande by design).
 * Kan vert.x/Docker på något sätt hjälpa oss att hantera "zero downtime deployments"? Är det enklaste att köra en proxy framför,  sätta upp ett nytt kluster och sedan styra om trafiken?
-
+  ME - Vi kan titta på hur HAProxy löser detta problem. Den styr om trafiken till de noder som garanterat är uppe. 
 
 ### Frågor till kund (som behöver renskrivas om vi skall skicka över dem!) 
 * Hur får vi tillgång till protofuf-specarna?
