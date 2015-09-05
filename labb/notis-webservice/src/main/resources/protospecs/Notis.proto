@@ -1,0 +1,14 @@
+/*
+# cd push-prototype/labb/notis-webservice/src/main/resources/protospecs
+# protoc -I=. --java_out=../../java Notis.proto
+
+*/
+
+package notis;
+
+option java_package = "com.omegapoint.protobuf";
+option java_outer_classname = "NotisProtos";
+
+message Notis {
+    required string msg = 1;
+}
