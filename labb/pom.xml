@@ -12,6 +12,7 @@
     <modules>
         <module>notis-webservice</module>
         <module>notis-domain</module>
+        <module>notis-util</module>
     </modules>
 
     <dependencies>
