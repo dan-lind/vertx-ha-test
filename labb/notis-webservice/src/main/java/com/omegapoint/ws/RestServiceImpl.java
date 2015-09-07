@@ -1,21 +1,22 @@
 package com.omegapoint.ws;
 
 import com.google.protobuf.InvalidProtocolBufferException;
+import com.omegapoint.bid.LoggerUtil;
 import com.omegapoint.protobuf.NotisProtos;
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.EventBus;
-import io.vertx.core.eventbus.Message;
 import io.vertx.core.eventbus.MessageConsumer;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 import io.vertx.ext.web.handler.BodyHandler;
+import org.apache.log4j.Logger;
 
 public class RestServiceImpl extends AbstractVerticle implements RestService {
 
+    private static Logger logger = LoggerUtil.getLogger();
     private final int PORT = 8080;
     @Override
     public void start() {
@@ -26,7 +27,8 @@ public class RestServiceImpl extends AbstractVerticle implements RestService {
         router.get("/push/gcm/:message").handler(routingContext -> RestServiceImpl.this.sendPushToGCM(routingContext));
         router.put("/push/apns/:message").handler(routingContext -> RestServiceImpl.this.sendPushToAPNS(routingContext));
 
-        System.out.println("Listening on " + PORT);
+
+        logger.info("Listening on " + PORT);
         vertx.createHttpServer().requestHandler(router::accept).listen(PORT);
     }
 
@@ -38,13 +40,13 @@ public class RestServiceImpl extends AbstractVerticle implements RestService {
     public void sendPushToGCM(RoutingContext routingContext) {
         String message = routingContext.request().getParam("message");
         HttpServerResponse response = routingContext.response();
-        response.putHeader("content-type", "text/html").end("You wrote: "+message);
+        response.putHeader("content-type", "text/html").end("You wrote: " + message);
 
-        System.out.println("Message on GCM: "+message);
+        logger.debug("Message on GCM: " + message);
 
         EventBus eb = vertx.eventBus();
         MessageConsumer<String> consumer = eb.consumer("news.uk.sport");
-        consumer.handler(msg -> System.out.println("I have received a message: " + msg.body()));
+        consumer.handler(msg -> logger.debug("I have received a message: " + msg.body()));
     }
 
     @Override
@@ -52,14 +54,14 @@ public class RestServiceImpl extends AbstractVerticle implements RestService {
 
         HttpServerRequest request = routingContext.request();
         String contentType = request.headers().get("Content-Type");
-        System.out.println("Content-Type = " + contentType);
+        logger.debug("Content-Type = " + contentType);
 
         Buffer data = routingContext.getBody();
         byte[] contents = data.getBytes();
         try {
             NotisProtos.Notis notis = NotisProtos.Notis.parseFrom(contents);
 
-            System.out.println("Protobuf message length = " + data.length() + "\nProtobuf message: " + notis.getMsg());
+            logger.debug("Protobuf message length = " + data.length() + "\nProtobuf message: " + notis.getMsg());
 
             String message = routingContext.request().getParam("message");
             HttpServerResponse response = routingContext.response();
@@ -67,7 +69,7 @@ public class RestServiceImpl extends AbstractVerticle implements RestService {
             response.putHeader("Content-Type", "text/html");
             response.end("You wrote: " + message);
 
-            System.out.println("Message on APNS: " + message);
+            logger.debug("Message on APNS: " + message);
 
             EventBus eb = vertx.eventBus();
 
