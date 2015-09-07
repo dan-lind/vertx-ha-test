@@ -1,5 +1,8 @@
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
 
+*.class
+*/target/*
+
 *.iml
 
 ## Directory-based project format:
