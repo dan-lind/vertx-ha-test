@@ -10,5 +10,5 @@ option java_package = "com.omegapoint.protobuf";
 option java_outer_classname = "NotisProtos";
 
 message Notis {
-    required string msg = 1;
+    optional string msg = 1;
 }
