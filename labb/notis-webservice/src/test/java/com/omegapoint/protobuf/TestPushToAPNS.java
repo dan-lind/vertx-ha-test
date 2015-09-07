@@ -18,7 +18,7 @@ import java.io.IOException;
 
 
 @RunWith(VertxUnitRunner.class)
-public class TestSendProto  {
+public class TestPushToAPNS {
     private Vertx vertx;
 
     @Before
@@ -29,7 +29,6 @@ public class TestSendProto  {
                 .setConfig(new JsonObject().put("http.port", 8080)
                 );
         vertx.deployVerticle(RestServiceImpl.class.getName(), options, context.asyncAssertSuccess());
-
     }
 
     @Test
@@ -40,20 +39,11 @@ public class TestSendProto  {
         Buffer buffer = Buffer.buffer(contents);
 
         final Async async = context.async();
-        vertx.createHttpClient().put(8080, "localhost", "/push/apns/tjena", new Handler<HttpClientResponse>() {
-
-            @Override
-            public void handle(HttpClientResponse response) {
-                response.handler(new Handler<Buffer>() {
-                    @Override
-                    public void handle(Buffer body) {
-                        System.out.println("Buffer = " + body.toString());
-                        async.complete();
-                    }
-                });
-            }
-        }).putHeader("Content-Length", Integer.toString(buffer.length()))
-          .putHeader("Content-Type", "application/protobuf-x").write(buffer);
+        vertx.createHttpClient().put(8080, "localhost", "/push/apns/tjena", response -> response.handler(body -> {
+            System.out.println("Buffer = " + body.toString());
+            async.complete();
+        })).putHeader("Content-Length", Integer.toString(buffer.length()))
+           .putHeader("Content-Type", "application/protobuf-x").write(buffer);
     }
 
     @After
