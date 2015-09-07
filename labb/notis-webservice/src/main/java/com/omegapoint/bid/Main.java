@@ -1,5 +1,6 @@
 package com.omegapoint.bid;
 
+import com.omegapoint.handler.ApnsReceiver;
 import com.omegapoint.ws.RestServiceImpl;
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
@@ -15,6 +16,7 @@ public class Main {
         Consumer<Vertx> runner = vertx -> {
             try {
                 vertx.deployVerticle(RestServiceImpl.class.getName());
+                vertx.deployVerticle(ApnsReceiver.class.getName());
             } catch (Throwable t) {
                 t.printStackTrace();
             }

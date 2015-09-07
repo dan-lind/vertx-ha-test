@@ -43,10 +43,6 @@ public class RestServiceImpl extends AbstractVerticle implements RestService {
         response.putHeader("content-type", "text/html").end("You wrote: " + message);
 
         logger.debug("Message on GCM: " + message);
-
-        EventBus eb = vertx.eventBus();
-        MessageConsumer<String> consumer = eb.consumer("news.uk.sport");
-        consumer.handler(msg -> logger.debug("I have received a message: " + msg.body()));
     }
 
     @Override
@@ -74,7 +70,7 @@ public class RestServiceImpl extends AbstractVerticle implements RestService {
             EventBus eb = vertx.eventBus();
 
             //eb.publish("news.uk.sport", "Yay! Someone kicked a ball");
-            eb.send("news.uk.sport", "Yay! Someone kicked a ball");
+            eb.send("apns-feed", "Yay! Someone kicked a ball");
         } catch (InvalidProtocolBufferException e) {
             e.printStackTrace();
         }

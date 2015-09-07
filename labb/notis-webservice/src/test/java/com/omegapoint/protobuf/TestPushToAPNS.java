@@ -1,5 +1,6 @@
 package com.omegapoint.protobuf;
 
+import com.omegapoint.handler.ApnsReceiver;
 import com.omegapoint.ws.RestServiceImpl;
 import io.vertx.core.*;
 import io.vertx.core.buffer.Buffer;
@@ -29,6 +30,7 @@ public class TestPushToAPNS {
                 .setConfig(new JsonObject().put("http.port", 8080)
                 );
         vertx.deployVerticle(RestServiceImpl.class.getName(), options, context.asyncAssertSuccess());
+        vertx.deployVerticle(ApnsReceiver.class.getName());
     }
 
     @Test
