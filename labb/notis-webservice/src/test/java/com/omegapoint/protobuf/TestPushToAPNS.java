@@ -1,5 +1,8 @@
 package com.omegapoint.protobuf;
 
+import com.hazelcast.config.Config;
+import com.hazelcast.config.InterfacesConfig;
+import com.hazelcast.config.NetworkConfig;
 import com.omegapoint.bid.LoggerUtil;
 import com.omegapoint.ws.RestServiceImpl;
 import io.vertx.core.*;
@@ -37,9 +40,15 @@ public class TestPushToAPNS {
             }
         };
 
-        ClusterManager mgr = new HazelcastClusterManager();
-        VertxOptions options = new VertxOptions().setClusterManager(mgr);
-        Vertx.clusteredVertx(options, res -> {
+        Config config = new Config();
+        NetworkConfig networkConfig = new NetworkConfig();
+        InterfacesConfig interfacesConfig = new InterfacesConfig();
+        interfacesConfig.addInterface("0.0.0.0");
+        networkConfig.setInterfaces(interfacesConfig);
+        config.setNetworkConfig(networkConfig);
+        ClusterManager mgr = new HazelcastClusterManager(config);
+        VertxOptions vertxOptions = new VertxOptions().setClusterManager(mgr);
+        Vertx.clusteredVertx(vertxOptions, res -> {
             synchronized (LOCK) {
                 if (res.succeeded()) {
                     vertx = res.result();
@@ -52,7 +61,6 @@ public class TestPushToAPNS {
                 }
             }
         });
-
     }
 
     @Test
@@ -65,7 +73,7 @@ public class TestPushToAPNS {
 
         final Async async = context.async();
         vertx.createHttpClient().put(8080, "localhost", "/push/apns/tjena", response -> response.handler(body -> {
-            System.out.println("Buffer = " + body.toString());
+            logger.debug("Buffer = " + body.toString());
             async.complete();
         })).putHeader("Content-Length", Integer.toString(buffer.length()))
                 .putHeader("Content-Type", "application/protobuf-x").write(buffer);
