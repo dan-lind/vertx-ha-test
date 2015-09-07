@@ -1,5 +1,8 @@
 package com.omegapoint.bid;
 
+import com.hazelcast.config.Config;
+import com.hazelcast.config.InterfacesConfig;
+import com.hazelcast.config.NetworkConfig;
 import com.omegapoint.handler.ApnsReceiver;
 import com.omegapoint.ws.RestServiceImpl;
 import io.vertx.core.*;
@@ -28,8 +31,7 @@ public class Main {
             }
         };
 
-        ClusterManager mgr = new HazelcastClusterManager();
-        VertxOptions vertxOptions = new VertxOptions().setClusterManager(mgr);
+        VertxOptions vertxOptions = buildVertexOptions();
         Vertx.clusteredVertx(vertxOptions, res -> {
             if (res.succeeded()) {
                 Vertx vertx = res.result();
@@ -38,5 +40,17 @@ public class Main {
                 throw new RuntimeException("Could not setup Vert.x cluster!");
             }
         });
+    }
+
+    public static VertxOptions buildVertexOptions() {
+        Config config = new Config();
+        NetworkConfig networkConfig = new NetworkConfig();
+        InterfacesConfig interfacesConfig = new InterfacesConfig();
+        interfacesConfig.addInterface("0.0.0.0");
+        networkConfig.setInterfaces(interfacesConfig);
+        config.setNetworkConfig(networkConfig);
+        ClusterManager mgr = new HazelcastClusterManager(config);
+        VertxOptions vertxOptions = new VertxOptions().setClusterManager(mgr);
+        return vertxOptions;
     }
 }
