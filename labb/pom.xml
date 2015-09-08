@@ -10,7 +10,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <docker.image>vertx/vertx3-example</docker.image>
         <vertx.version>3.0.0</vertx.version>
     </properties>
 
@@ -52,45 +51,6 @@
     </dependencies>
 
     <build>
-        <pluginManagement>
-            <plugins>
-            <plugin>
-                <!--
-                  This plugin builds the Docker image. It merges src/main/docker/Dockerfile with the resources set in the
-                  configuration. The resources should embed the current project and its dependencies. Here there is no
-                  dependencies.
-                -->
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>0.2.8</version>
-                <executions>
-                    <execution>
-                        <id>docker</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
-                    <imageName>${docker.image}</imageName>
-                    <resources>
-                        <resource>
-                            <targetPath>/verticles</targetPath>
-                            <directory>${project.build.directory}</directory>
-                            <includes>
-                                <!--<include>${project.artifactId}-${project.version}.jar</include>-->
-                                <include>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar</include>
-                            </includes>
-                        </resource>
-                    </resources>
-                </configuration>
-            </plugin>
-            </plugins>
-        </pluginManagement>
-
-
         <plugins>
 
             <plugin>

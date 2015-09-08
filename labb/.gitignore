@@ -4,6 +4,7 @@
 */target/*
 
 *.iml
+*.log
 
 ## Directory-based project format:
 .idea/
