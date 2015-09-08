@@ -32,7 +32,7 @@ public class Main {
                     vertx.deployVerticle(RestServiceImpl.class.getName(), options, new Handler<AsyncResult<String>>() {
                         @Override
                         public void handle(AsyncResult<String> stringAsyncResult) {
-                            logger.debug("Deploying verticle!");
+                            logger.debug("Deploying RestService verticle!");
                         }
                     });
                 } catch (Throwable t) {
