@@ -14,10 +14,7 @@
     </properties>
 
     <modules>
-        <module>notis-domain</module>
         <module>notis-util</module>
-        <module>notis-notificationHandler</module>
-        <module>notis-final</module>
         <module>notis-verticles</module>
     </modules>
 
