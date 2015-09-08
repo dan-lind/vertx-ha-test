@@ -17,6 +17,12 @@
             <artifactId>notis-util</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>notis-lab</groupId>
+            <artifactId>notis-notification-handlers</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 

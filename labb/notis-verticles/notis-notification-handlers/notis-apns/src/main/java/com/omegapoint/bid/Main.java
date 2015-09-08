@@ -6,7 +6,6 @@ import java.util.function.Consumer;
 import com.hazelcast.config.Config;
 import com.hazelcast.config.InterfacesConfig;
 import com.hazelcast.config.NetworkConfig;
-import com.omegapoint.bid.LoggerUtil;
 import com.omegapoint.notification.handlers.apns.ApnsReceiver;
 import io.vertx.core.*;
 import io.vertx.core.json.JsonObject;
