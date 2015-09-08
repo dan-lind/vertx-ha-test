@@ -14,11 +14,11 @@
     </properties>
 
     <modules>
-        <module>notis-webservice</module>
         <module>notis-domain</module>
         <module>notis-util</module>
         <module>notis-notificationHandler</module>
         <module>notis-final</module>
+        <module>notis-verticles</module>
     </modules>
 
     <dependencies>
