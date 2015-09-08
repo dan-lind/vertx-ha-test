@@ -15,7 +15,11 @@ public class GcmReceiver extends AbstractVerticle {
 
     EventBus eb = vertx.eventBus();
 
-    eb.consumer("gcm-feed", message -> System.out.println("Received GCM-message: " + message.body()));
+    //eb.consumer("gcm-feed", message -> System.out.println("Received GCM-message: " + message.body()));
+     eb.consumer("gcm-feed", message ->
+             message.reply("Hello")
+     );
+
 
     System.out.println("Ready!");
   }

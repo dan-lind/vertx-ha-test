@@ -14,19 +14,60 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
-    <dependency>
-        <groupId>io.vertx</groupId>
-        <artifactId>vertx-core</artifactId>
-        <version>3.0.0</version>
-        <scope>compile</scope>
-    </dependency>
-
         <dependency>
             <groupId>io.vertx</groupId>
-            <artifactId>vertx-hazelcast</artifactId>
+            <artifactId>vertx-dropwizard-metrics</artifactId>
             <version>3.0.0</version>
         </dependency>
-</dependencies>
+    </dependencies>
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>2.4.1</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <transformers>
+                            <transformer
+                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <manifestEntries>
+                                    <Main-Class>io.vertx.core.Starter</Main-Class>
+                                    <Main-Verticle>com.omegapoint.handler.StarterVerticle</Main-Verticle>
+                                </manifestEntries>
+                            </transformer>
+                            <transformer
+                                    implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                <resource>META-INF/services/io.vertx.core.spi.VerticleFactory</resource>
+                            </transformer>
+                        </transformers>
+                        <artifactSet>
+                        </artifactSet>
+                        <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar
+                        </outputFile>
+                        <filters>
+                            <filter>
+                                <artifact>*:*</artifact>
+                                <excludes>
+                                    <exclude>META-INF/*.SF</exclude>
+                                    <exclude>META-INF/*.DSA</exclude>
+                                    <exclude>META-INF/*.RSA</exclude>
+                                </excludes>
+                            </filter>
+                        </filters>
+                    </configuration>
+
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
 
 
 </project>

@@ -43,6 +43,8 @@ public class RestServiceImpl extends AbstractVerticle implements RestService {
         response.putHeader("content-type", "text/html").end("You wrote: " + message);
 
         logger.debug("Message on GCM: " + message);
+        vertx.eventBus().send("gcm-feed",message);
+
     }
 
     @Override
