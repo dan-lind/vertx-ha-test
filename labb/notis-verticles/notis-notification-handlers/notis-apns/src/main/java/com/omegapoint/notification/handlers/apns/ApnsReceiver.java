@@ -1,10 +1,9 @@
 package com.omegapoint.notification.handlers.apns;
 
-import com.omegapoint.notification.handlers.NotificationHandler;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.eventbus.EventBus;
 
-public class ApnsReceiver extends AbstractVerticle implements NotificationHandler {
+public class ApnsReceiver extends AbstractVerticle {
 
 
 
@@ -14,6 +13,6 @@ public class ApnsReceiver extends AbstractVerticle implements NotificationHandle
 
     eb.consumer("apns-feed", message -> System.out.println("Received APNs-message: " + message.body()));
 
-    System.out.println("Ready!");
+    System.out.println("Apns Verticle Ready!");
   }
 }
