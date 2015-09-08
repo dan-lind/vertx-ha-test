@@ -1,12 +1,8 @@
 package com.omegapoint.bid;
 
-import com.hazelcast.config.ClasspathXmlConfig;
 import com.hazelcast.config.Config;
 import com.hazelcast.config.InterfacesConfig;
 import com.hazelcast.config.NetworkConfig;
-import com.omegapoint.handler.ApnsReceiver;
-import com.omegapoint.handler.GcmReceiver;
-import com.omegapoint.handler.Sender;
 import com.omegapoint.ws.RestServiceImpl;
 import io.vertx.core.*;
 import io.vertx.core.json.JsonObject;
@@ -21,23 +17,17 @@ public class Main {
     final static Logger logger = LoggerUtil.getLogger();
 
     public static void main(String[] args) {
-        Consumer<Vertx> runner = new Consumer<Vertx>() {
-            @Override
-            public void accept(Vertx vertx) {
-                try {
-                    vertx.deployVerticle(Sender.class.getName());
-                    vertx.deployVerticle(ApnsReceiver.class.getName());
-                    vertx.deployVerticle(GcmReceiver.class.getName());
-                    DeploymentOptions options = new DeploymentOptions().setConfig(new JsonObject().put("http.port", 8080));
-                    vertx.deployVerticle(RestServiceImpl.class.getName(), options, new Handler<AsyncResult<String>>() {
-                        @Override
-                        public void handle(AsyncResult<String> stringAsyncResult) {
-                            logger.debug("Deploying RestService verticle!");
-                        }
-                    });
-                } catch (Throwable t) {
-                    t.printStackTrace();
-                }
+        Consumer<Vertx> runner = vertx -> {
+            try {
+                DeploymentOptions options = new DeploymentOptions().setConfig(new JsonObject().put("http.port", 8080));
+                vertx.deployVerticle(RestServiceImpl.class.getName(), options, new Handler<AsyncResult<String>>() {
+                    @Override
+                    public void handle(AsyncResult<String> stringAsyncResult) {
+                        logger.debug("Deploying RestService verticle!");
+                    }
+                });
+            } catch (Throwable t) {
+                t.printStackTrace();
             }
         };
 
