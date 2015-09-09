@@ -1,12 +1,11 @@
 package com.omegapoint.ws;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.omegapoint.bid.LoggerUtil;
+import com.omegapoint.logging.LoggerUtil;
 import com.omegapoint.protobuf.NotisProtos;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.eventbus.EventBus;
-import io.vertx.core.eventbus.MessageConsumer;
 import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
