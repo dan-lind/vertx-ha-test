@@ -1,9 +1,10 @@
-package com.omegapoint.protobuf;
+package com.omegapoint.rest;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.config.InterfacesConfig;
 import com.hazelcast.config.NetworkConfig;
 import com.omegapoint.bid.LoggerUtil;
+import com.omegapoint.protobuf.NotisProtos;
 import com.omegapoint.ws.RestServiceImpl;
 import io.vertx.core.*;
 import io.vertx.core.buffer.Buffer;
@@ -14,7 +15,6 @@ import io.vertx.ext.unit.junit.VertxUnitRunner;
 import io.vertx.spi.cluster.hazelcast.HazelcastClusterManager;
 import org.apache.log4j.Logger;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +24,7 @@ import java.util.function.Consumer;
 
 
 @RunWith(VertxUnitRunner.class)
-public class TestPushToAPNS {
+public class TestAPNS {
     private Vertx vertx;
     private Logger logger = LoggerUtil.getLogger();
     private final Object LOCK = new Object();
@@ -64,7 +64,7 @@ public class TestPushToAPNS {
     }
 
     @Test
-    public void testMsg(TestContext context) throws Exception {
+    public void testPushAPNS(TestContext context) throws Exception {
         while (!isSetup()) {}
         NotisProtos.Notis.Builder notis = NotisProtos.Notis.newBuilder();
         notis.setMsg("The message from protobuf!!!");
