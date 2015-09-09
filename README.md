@@ -23,3 +23,4 @@ Några av sakerna som vi inte hanterar
 - APNs flödet
 - Konfig av meddelandetext
 - Språkstöd
+- Tester (integrations-, acceptans- etc)
