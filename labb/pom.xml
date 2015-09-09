@@ -16,6 +16,7 @@
     <modules>
         <module>notis-util</module>
         <module>notis-verticles</module>
+        <module>notis-integration-tests</module>
     </modules>
 
     <dependencies>
