@@ -3,7 +3,7 @@ package com.omegapoint.rest;
 import com.hazelcast.config.Config;
 import com.hazelcast.config.InterfacesConfig;
 import com.hazelcast.config.NetworkConfig;
-import com.omegapoint.bid.LoggerUtil;
+import com.omegapoint.logging.LoggerUtil;
 import com.omegapoint.protobuf.NotisProtos;
 import com.omegapoint.ws.RestServiceImpl;
 import io.vertx.core.*;
