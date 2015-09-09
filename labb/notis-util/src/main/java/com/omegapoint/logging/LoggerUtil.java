@@ -1,4 +1,4 @@
-package com.omegapoint.bid;
+package com.omegapoint.logging;
 
 import org.apache.log4j.Logger;
 
