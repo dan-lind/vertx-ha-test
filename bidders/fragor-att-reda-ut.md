@@ -45,3 +45,5 @@
 DL - Kanske även här är bäst att kolla med våra kollegor först
 * Hur får vi tillgång till protofuf-specarna?
 DL - Jag GISSAR att det inte finns några specar, tror nog att vi förväntas ta fram dem?
+
+* Appilationen bör logga throughput mm. 
