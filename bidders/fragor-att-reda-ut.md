@@ -1,3 +1,14 @@
+### Frågor till kund (som behöver renskrivas om vi skall skicka över dem!) 
+* Är vi bundna att köra någon särskilt utvecklingsmiljö eller är vi fria att välja själva?
+* Gällande uppdateringar om omstarter, hur definieras "nämnvärt" i frågan om hur det kommer påverka leveransen av meddelanden?
+* Är "garanterad leverans" av meddelanden ett affärskrav? Kräver isåfall återrapportering till Cava server i någon form. vert.x   kör "best effort delivery", dvs ej garanterad leverans. 
+* Finns det några krav på att kunna mäta throughput i systemet? (Typ Metrix med dropwizard)
+* Skall auditloggarna skrivas till fil eller databas?
+* "Enkelt" att ändra meddelande text. Hur definerar vi enkelt? Att ändra i en configfil och release om två veckor, är det tillräckligt enkelt? 
+* Syfte med att spara visitkort i DB hos Notis? Finns inte uppgifterna redan i Cava?
+* VIKTIGASTE FRÅGAN IDAG: Är det OK att vi går vidare med vert.x  ?
+
+
 ### Frågor till oss
 * Ska vi välja en arkitektur med JMS?
     Om vi ska köra JMS på vårt sida (Notis) så behöver vi en message broker, vilket ökar komplexiteten.
@@ -12,11 +23,7 @@
 * Kan vert.x/Docker på något sätt hjälpa oss att hantera "zero downtime deployments"? Är det enklaste att köra en proxy framför,  sätta upp ett nytt kluster och sedan styra om trafiken?
   * ME - Vi kan titta på hur HAProxy löser detta problem. Den styr om trafiken till de noder som garanterat är uppe. 
 
-### Frågor till kund (som behöver renskrivas om vi skall skicka över dem!) 
-* Hur får vi tillgång till protofuf-specarna?
-* Är vi bundna att köra någon särskilt utvecklingsmiljö eller är vi fria att välja själva?
-* Gällande uppdateringar om omstarter, hur definieras "nämnvärt" i frågan om hur det kommer påverka leveransen av meddelanden?
 * Vilken paketstruktur i Java ska vi använda? (T.ex. com.omegapoint.bid?)
-* Är "garanterad leverans" av meddelanden ett affärskrav? Kräver isåfall återrapportering till Cava server i någon form. vert.x   kör "best effort delivery", dvs ej garanterad leverans. 
-* Finns det några krav på att kunna mäta throughput i systemet? (Typ Metrix med dropwizard)
-* Skall auditloggarna skrivas till fil eller databas?
+DL - Kanske även här är bäst att kolla med våra kollegor först
+* Hur får vi tillgång till protofuf-specarna?
+DL - Jag GISSAR att det inte finns några specar, tror nog att vi förväntas ta fram dem?
