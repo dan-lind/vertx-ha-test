@@ -9,6 +9,8 @@
 * Är "garanterad leverans" av meddelanden ett affärskrav? Kräver isåfall återrapportering till Cava server i någon form. vert.x   kör "best effort delivery", dvs ej garanterad leverans. 
 - OK om allt krashar. Vi ska inte lägga tid på att försöka få 100% upptid.
 
+- OK med vert.x, vi äger ALL kod. Inte bara "vår" kod. Viktigt att kolla. Affärsrisk.
+
 ### Teknikkrav
 * Skall auditloggarna skrivas till fil eller databas?
   -Nej, logga till fil. Inte till DB. 
