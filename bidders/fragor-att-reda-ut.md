@@ -2,7 +2,7 @@
 
 ### Affärskrav
 * Gällande uppdateringar om omstarter, hur definieras "nämnvärt" i frågan om hur det kommer påverka leveransen av meddelanden?
-* 
+
 
 * Syfte med att spara visitkort i DB hos Notis? Finns inte uppgifterna redan i Cava?
 
