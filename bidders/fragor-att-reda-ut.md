@@ -11,10 +11,9 @@
 
 ### Teknikkrav
 * Skall auditloggarna skrivas till fil eller databas?
-* -Nej, logga till fil. Inte till DB. 
+  -Nej, logga till fil. Inte till DB. 
 
 * Mer exakt VAD skall loggas? Typ meddelande mottaget från Cava, meddelande skrivet till DB, osv osv.
-* 
 
 * "Enkelt" att ändra meddelande text. Hur definerar vi enkelt? Att ändra i en configfil och release om två veckor, är det tillräckligt enkelt? 
 * Är vi bundna att köra någon särskilt utvecklingsmiljö eller är vi fria att välja själva?
