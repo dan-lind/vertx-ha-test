@@ -6,12 +6,16 @@
 * Är "garanterad leverans" av meddelanden ett affärskrav? Kräver isåfall återrapportering till Cava server i någon form. vert.x   kör "best effort delivery", dvs ej garanterad leverans. 
 
 ### Teknikkrav
-* Finns det några krav på att kunna mäta throughput i systemet? (Typ Metrix med dropwizard)
 * Skall auditloggarna skrivas till fil eller databas?
+* Mer exakt VAD skall loggas? Typ meddelande mottaget från Cava, meddelande skrivet till DB, osv osv.
 * "Enkelt" att ändra meddelande text. Hur definerar vi enkelt? Att ändra i en configfil och release om två veckor, är det tillräckligt enkelt? 
 * Är vi bundna att köra någon särskilt utvecklingsmiljö eller är vi fria att välja själva?
+* Finns det några krav på att kunna mäta throughput i systemet? (Typ Metrix med dropwizard)
 
 * VIKTIGASTE FRÅGAN IDAG: Är det OK att vi går vidare med vert.x  ?
+* Databas, några specifika krav? DB2 har nämnts. 
+* Interface, REST API mer generellt. HornetQ connector möjligtvis enklare iom att Cava ej behöver bry sig om ifall vi är uppe eller ej. 
+* Fail-over, HA, i vilken utsträckning?
 
 
 ### Frågor till oss
