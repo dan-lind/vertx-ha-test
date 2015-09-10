@@ -3,6 +3,7 @@ package com.omegapoint.bid;
 import com.hazelcast.config.Config;
 import com.hazelcast.config.InterfacesConfig;
 import com.hazelcast.config.NetworkConfig;
+import com.omegapoint.logging.LoggerUtil;
 import com.omegapoint.ws.RestServiceImpl;
 import io.vertx.core.*;
 import io.vertx.core.json.JsonObject;

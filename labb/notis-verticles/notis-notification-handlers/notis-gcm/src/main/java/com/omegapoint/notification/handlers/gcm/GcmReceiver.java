@@ -25,7 +25,7 @@ public class GcmReceiver extends AbstractVerticle {
      eb.consumer("gcm-feed", message ->
              mongoClient.insert("notification",  new JsonObject().put("title", message.body()), res -> {
                  if (res.succeeded()) {
-
+                    GcmSender.sendMessage(message.body().toString());
                      System.out.println("Saved to DB: " + message);
 
                  } else {
