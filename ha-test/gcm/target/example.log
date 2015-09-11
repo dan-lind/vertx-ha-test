@@ -1,0 +1,3 @@
+INFO vert.x-eventloop-thread-2 GcmReceiver - Log from Log4j
+ERROR vert.x-eventloop-thread-2 GcmReceiver - Test
+ERROR vert.x-eventloop-thread-2 GcmReceiver - Test
